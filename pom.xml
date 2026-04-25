@@ -7,6 +7,12 @@
     <groupId>com.etoak.et2512</groupId>
     <artifactId>dishes-cloud</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>cloud-common</module>
+        <module>cloud-model</module>
+        <module>cloud-modules</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -40,6 +46,36 @@
     </parent>
     <dependencyManagement>
         <dependencies>
+            <!-- common-core -->
+            <dependency>
+                <groupId>com.etoak.et2512</groupId>
+                <artifactId>common-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- common-jwt -->
+            <dependency>
+                <groupId>com.etoak.et2512</groupId>
+                <artifactId>common-jwt</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- common-web -->
+            <dependency>
+                <groupId>com.etoak.et2512</groupId>
+                <artifactId>common-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- common-redis -->
+            <dependency>
+                <groupId>com.etoak.et2512</groupId>
+                <artifactId>common-redis</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- cloud-model -->
+            <dependency>
+                <groupId>com.etoak.et2512</groupId>
+                <artifactId>cloud-model</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
