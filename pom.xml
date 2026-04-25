@@ -12,6 +12,7 @@
         <module>cloud-common</module>
         <module>cloud-model</module>
         <module>cloud-modules</module>
+        <module>cloud-gateway</module>
     </modules>
 
     <properties>
