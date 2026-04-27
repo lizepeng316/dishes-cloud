@@ -17,3 +17,18 @@ spring:
         namespace: et2512
       config:
         namespace: et2512
+    gateway:
+      server:
+        webflux:
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowedOrigins: "*"
+                allowed-headers: "*"
+                max-age: 3600
+                allowedMethods:
+                  - GET
+                  - POST
+                  - PUT
+                  - DELETE
+                  - OPTIONS
