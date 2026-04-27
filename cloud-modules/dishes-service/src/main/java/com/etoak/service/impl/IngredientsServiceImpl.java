@@ -43,4 +43,29 @@ public class IngredientsServiceImpl extends ServiceImpl<IngredientsMapper, Ingre
                 .list();
     }
 
+    @Override
+    public void update(Integer id, Ingredients ingredients) {
+        if (ObjectUtils.isEmpty(this.getById(id))){
+            throw new CustomException("食材不存在");
+        }
+        String name = ingredients.getName();
+        if (StringUtils.isNotEmpty(name)){
+            Ingredients saveIngredients = this.getByNames(name);
+            if (ObjectUtils.isNotEmpty(saveIngredients) && !saveIngredients.getId().equals(id)){
+                throw new CustomException("不能修改为其他食材的名称");
+            }
+        }
+        ingredients.setId(id);
+        this.updateById(ingredients);
+    }
+
+    @Override
+    public void delete(int id) {
+        if (ObjectUtils.isEmpty(this.getById(id))){
+            throw new CustomException("食材不存在");
+        }
+
+        this.removeById(id);
+    }
+
 }

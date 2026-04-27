@@ -30,4 +30,19 @@ public interface IngredientsService extends IService<Ingredients> {
      * @param ingredients 查询参数
      */
     List<Ingredients> getList(Ingredients ingredients);
+
+    /**
+     * 修改食材
+     *
+     * @param id          食材id
+     * @param ingredients 食材信息
+     */
+    void update(Integer id, Ingredients ingredients);
+
+    /**
+     * 删除食材
+     *
+     * @param id 食材id
+     */
+    void delete(int id);
 }

@@ -32,4 +32,17 @@ public class IngredientsController {
         PageVO<Ingredients> pageVO = ingredientsService.pageList(pageNum, pageSize, ingredients);
         return ResultVO.success(pageVO);
     }
+
+    @PostMapping("/{id}")
+    public ResultVO<Object> update(@PathVariable Integer id, @RequestBody Ingredients ingredients){
+        ingredientsService.update(id,ingredients);
+        return ResultVO.success();
+    }
+
+    @PostMapping("/delete")
+    public ResultVO<Object> delete(int id){
+        ingredientsService.delete(id);
+        return ResultVO.success();
+    }
+
 }
