@@ -2,6 +2,9 @@ package com.etoak.mapper;
 
 import com.etoak.entity.Dishes;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.etoak.vo.DishesVO;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface DishesMapper extends BaseMapper<Dishes> {
 
+    List<DishesVO> getList(Dishes dishes);
 }

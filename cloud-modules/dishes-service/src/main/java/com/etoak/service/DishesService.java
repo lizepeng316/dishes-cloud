@@ -1,8 +1,12 @@
 package com.etoak.service;
 
+import com.etoak.common.core.vo.PageVO;
 import com.etoak.entity.Dishes;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.etoak.vo.DishesVO;
 import jakarta.validation.Valid;
+
+import java.util.List;
 
 /**
  * <p>
@@ -19,4 +23,11 @@ public interface DishesService extends IService<Dishes> {
      * @param dishes 菜品
      */
     void add(Dishes dishes);
+
+    PageVO<DishesVO> listpage(Integer pageNum, Integer pageSize, Dishes dishes);
+
+
+    void update(Integer id, Dishes dishes);
+
+    void delete(int id);
 }

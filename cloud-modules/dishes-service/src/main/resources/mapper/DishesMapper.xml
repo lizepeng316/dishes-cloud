@@ -22,5 +22,44 @@
     <sql id="Base_Column_List">
         id, name, url, main, main_num, minor, minor_num, seasoning, seasoning_num, remark, create_time, update_time
     </sql>
+    <sql id="list_sql">
+        SELECT
+            t.id,
+            t.name,
+            t.url,
+            t.main,
+            main.name as mainName,
+            t.main_num,
+            t.minor,
+            minor.name as minorName,
+            t.minor_num,
+            t.seasoning,
+            seasoning.name as seasoningName,
+            t.seasoning_num,
+            t.remark,
+            t.create_time,
+            t.update_time
+        FROM t_dishes t
+                 LEFT JOIN t_ingredients main on t.main = main.id and main.type = 1
+                 LEFT JOIN t_ingredients minor on t.minor = minor.id and minor.type = 2
+                 LEFT JOIN t_ingredients seasoning on t.seasoning = seasoning.id and seasoning.type = 3
+    </sql>
+    <select id="getList" resultType="com.etoak.vo.DishesVO" parameterType="com.etoak.entity.Dishes">
+        <include refid="list_sql"/>
+        <where>
+            <if test="name != null and name != ''">
+                and t.name like concat(#{name},'%')
+            </if>
+            <if test="main != null">
+                and t.main = #{main}
+            </if>
+            <if test="minor != null">
+                and t.minor = #{minor}
+            </if>
+            <if test="seasoning != null">
+                and t.seasoning = #{seasoning}
+            </if>
+        </where>
+    </select>
 
 </mapper>
